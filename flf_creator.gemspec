@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["mduffield@gmail.com"]
   spec.description   = %q{Helper for building fixed length files}
   spec.summary       = %q{Gem for fixed length file creation methods}
-  spec.homepage      = ""
+  spec.homepage      = "http://github.com/mduffield/flf_creator"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

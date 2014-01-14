@@ -1,6 +1,6 @@
 # FlfCreator
 
-TODO: Write a gem description
+FlfCreator is a simple library of helper functions for creating fixed length record files.
 
 ## Installation
 
