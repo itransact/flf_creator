@@ -34,8 +34,16 @@ describe FlfCreator do
       FlfCreator.format_value(DateTime.parse('2012-07-13T14:08:06'), '%Y%m%d').must_equal('20120713')
     end
 
-    it 'should format a date using a String' do
+    it 'should format a date using a YYYY-MM-DD String' do
       FlfCreator.format_value('2012-07-13', '%Y%m%d').must_equal Date.parse('2012-07-13').strftime('%Y%m%d')
+    end
+
+    it 'should format a date using a YYYY-M-D String' do
+      FlfCreator.format_value('2012-7-1', '%Y%m%d').must_equal Date.parse('2012-07-01').strftime('%Y%m%d')
+    end
+
+    it 'should format a date using a YYYY/M/D String' do
+      FlfCreator.format_value('2012/7/1', '%Y%m%d').must_equal Date.parse('2012-07-01').strftime('%Y%m%d')
     end
   end
 

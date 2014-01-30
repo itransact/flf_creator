@@ -23,8 +23,8 @@ module FlfCreator
       when String
         if value.is_a?(DateTime)
           value.strftime(format)
-        elsif value.is_a?(String) and value =~ /^\d{4}.\d{1,2}.\d{1,2}(.+?)/
-          Date.parse(value).strftime(format)
+        elsif value.is_a?(String) and value =~ /^\d{4}.\d{1,2}.\d{1,2}+?/
+          DateTime.parse(value).strftime(format)
         else
           format % value.to_i
         end
