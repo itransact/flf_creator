@@ -1,4 +1,4 @@
-require "flf_creator/version"
+require 'flf_creator/version'
 require 'date'
 module FlfCreator
   def self.build_field(args = {})
@@ -24,6 +24,8 @@ module FlfCreator
         if value.is_a?(DateTime)
           value.strftime(format)
         elsif value.is_a?(String) and value =~ /^\d{4}.\d{1,2}.\d{1,2}+?/
+          DateTime.parse(value).strftime(format)
+        elsif value.is_a?(String) and value =~ /^\d{1,2}.\d{1,2}.\d{4}+?/
           DateTime.parse(value).strftime(format)
         else
           format % value.to_i

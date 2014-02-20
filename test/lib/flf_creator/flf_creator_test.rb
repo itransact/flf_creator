@@ -45,6 +45,15 @@ describe FlfCreator do
     it 'should format a date using a YYYY/M/D String' do
       FlfCreator.format_value('2012/7/1', '%Y%m%d').must_equal Date.parse('2012-07-01').strftime('%Y%m%d')
     end
+
+    it 'should format a date using a M/D/YYYY String' do
+      FlfCreator.format_value('1/7/2012', '%Y%m%d').must_equal Date.parse('2012-07-01').strftime('%Y%m%d')
+    end
+
+    it 'should format a date using a MM/DD/YYYY String' do
+      FlfCreator.format_value('01/07/2012', '%Y%m%d').must_equal Date.parse('2012-07-01').strftime('%Y%m%d')
+    end
+
   end
 
   describe '.build_record' do
