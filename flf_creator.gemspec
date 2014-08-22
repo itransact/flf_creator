@@ -6,11 +6,11 @@ require 'flf_creator/version'
 Gem::Specification.new do |spec|
   spec.name          = "flf_creator"
   spec.version       = FlfCreator::VERSION
-  spec.authors       = ["Matthew Duffield"]
-  spec.email         = ["mduffield@gmail.com"]
+  spec.authors       = ["Matthew Duffield", 'Jason Edwards (iTransact Group)']
+  spec.email         = ["mduffield@gmail.com", 'j.edwards@itransact.com']
   spec.description   = %q{Helper for building fixed length files}
   spec.summary       = %q{Gem for fixed length file creation methods}
-  spec.homepage      = "http://github.com/mduffield/flf_creator"
+  spec.homepage      = "http://github.com/itransact/flf_creator"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

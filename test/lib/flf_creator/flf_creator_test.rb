@@ -54,6 +54,14 @@ describe FlfCreator do
       FlfCreator.format_value('01/07/2012', '%Y%m%d').must_equal Date.parse('2012-07-01').strftime('%Y%m%d')
     end
 
+    it 'should format using an internal formatter' do
+      FlfCreator.format_value('ABCD-efgh 1234', :alphanumeric).must_equal('ABCDefgh1234')
+      FlfCreator.format_value('P.O. Box 1234', :alphanumeric_space).must_equal('PO Box 1234')
+      FlfCreator.format_value('ABCD-efgh 1234', :alphabetic).must_equal('ABCDefgh')
+      FlfCreator.format_value('P.O. Box 1234', :alphabetic_space).must_equal('PO Box ')
+      FlfCreator.format_value('(234) 567-8901', :numeric).must_equal('2345678901')
+    end
+
   end
 
   describe '.build_record' do

@@ -1,6 +1,25 @@
 require 'flf_creator/version'
 require 'date'
 module FlfCreator
+
+  module Formats
+    def self.numeric(value)
+      value.gsub(/[^0-9]/, '')
+    end
+    def self.alphanumeric(value)
+      value.gsub(/[^a-z0-9]+/i, '')
+    end
+    def self.alphanumeric_space(value)
+      value.gsub(/[^a-z0-9 ]+/i, '')
+    end
+    def self.alphabetic(value)
+      value.gsub(/[^a-z]+/i, '')
+    end
+    def self.alphabetic_space(value)
+      value.gsub(/[^a-z ]+/i, '')
+    end
+  end
+
   def self.build_field(args = {})
     value = format_value(args[:value], args[:format])
     if value.length > args[:length].to_i
@@ -30,6 +49,8 @@ module FlfCreator
         else
           format % value.to_i
         end
+      when Symbol
+        Formats.send(format, value)
       else
         raise "Unknown format type: #{format.class}"
     end.to_s
