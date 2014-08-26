@@ -40,7 +40,7 @@ module FlfCreator
       when Proc
         format.call(value)
       when String
-        if value.is_a?(DateTime)
+        if value.is_a?(DateTime) || value.is_a?(Date) || value.is_a?(Time)
           value.strftime(format)
         elsif value.is_a?(String) and value =~ /^\d{4}.\d{1,2}.\d{1,2}+?/
           DateTime.parse(value).strftime(format)

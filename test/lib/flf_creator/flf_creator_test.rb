@@ -30,28 +30,36 @@ describe FlfCreator do
       FlfCreator.format_value('foo', Proc.new { |value| value.sub('foo','bar')}).must_equal('bar')
     end
 
-    it 'should format a datetime using a String' do
+    it 'should format a DateTime using a String' do
       FlfCreator.format_value(DateTime.parse('2012-07-13T14:08:06'), '%Y%m%d').must_equal('20120713')
     end
 
+    it 'should format a Date using a String' do
+      FlfCreator.format_value(Date.civil(2012, 7, 13), '%Y%m%d').must_equal('20120713')
+    end
+
+    it 'should format a Time using a String' do
+      FlfCreator.format_value(Time.local(2012, 07, 13, 14, 8, 6), '%Y%m%d').must_equal('20120713')
+    end
+
     it 'should format a date using a YYYY-MM-DD String' do
-      FlfCreator.format_value('2012-07-13', '%Y%m%d').must_equal Date.parse('2012-07-13').strftime('%Y%m%d')
+      FlfCreator.format_value('2012-07-13', '%Y%m%d').must_equal('20120713')
     end
 
     it 'should format a date using a YYYY-M-D String' do
-      FlfCreator.format_value('2012-7-1', '%Y%m%d').must_equal Date.parse('2012-07-01').strftime('%Y%m%d')
+      FlfCreator.format_value('2012-7-1', '%Y%m%d').must_equal('20120701')
     end
 
     it 'should format a date using a YYYY/M/D String' do
-      FlfCreator.format_value('2012/7/1', '%Y%m%d').must_equal Date.parse('2012-07-01').strftime('%Y%m%d')
+      FlfCreator.format_value('2012/7/1', '%Y%m%d').must_equal('20120701')
     end
 
     it 'should format a date using a M/D/YYYY String' do
-      FlfCreator.format_value('1/7/2012', '%Y%m%d').must_equal Date.parse('2012-07-01').strftime('%Y%m%d')
+      FlfCreator.format_value('1/7/2012', '%Y%m%d').must_equal('20120701')
     end
 
     it 'should format a date using a MM/DD/YYYY String' do
-      FlfCreator.format_value('01/07/2012', '%Y%m%d').must_equal Date.parse('2012-07-01').strftime('%Y%m%d')
+      FlfCreator.format_value('01/07/2012', '%Y%m%d').must_equal('20120701')
     end
 
     it 'should format using an internal formatter' do
