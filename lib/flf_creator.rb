@@ -50,7 +50,7 @@ module FlfCreator
           format % value.to_i
         end
       when Symbol
-        Formats.send(format, value)
+        Formats.send(format, value.to_s)
       else
         raise "Unknown format type: #{format.class}"
     end.to_s
